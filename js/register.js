@@ -109,7 +109,30 @@ window.onload = function () {
     // register
     $('regbtn').onclick = function () {
         $('imgdiv').style.visibility = 'visible';
-        url = 'register_chk.php?name='+$('regname');
+        url = 'register_chk.php?name='+$('regname').value+'&pwd='+$('regpwd1').value+'&email='+$('email').value;
+        url += '&question='+$('question').value+'&answer='+$('answer').value;
+        url += '&realname='+$('realname').value+'&birthday='+$('birthday').value;
+        url += '&telephone='+$('telephone').value+'&qq='+$('qq').value;
+        alert(url);
+        return false;
+        xmlhttp.open('get',url,true);
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4) {
+                if (xmlhttp.status == 200) {
+                    msg = xmlhttp.responseText;
+                    if (msg == 1) {
+                        alert('register success! Please get your active code in your email.');
+                        location = 'main.php';
+                    }else if(msg == '-1') {
+                        alert("your server doesn't support pop3,please check");
+                    }else{
+                        alert(msg);
+                    }
+                }
+                $('imgdiv').style.visibility = 'hidden';
+            }
+        }
+        xmlhttp.send(null);
     }
 
 
