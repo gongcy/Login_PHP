@@ -109,7 +109,7 @@ window.onload = function () {
     // register
     $('regbtn').onclick = function () {
         $('imgdiv').style.visibility = 'visible';
-        url = 'register_chk.php?name='+$('regname').value+'&pwd='+$('regpwd1').value+'&email='+$('email').value;
+        url = 'register_check.php?name='+$('regname').value+'&pwd='+$('regpwd1').value+'&email='+$('email').value;
         url += '&question='+$('question').value+'&answer='+$('answer').value;
         url += '&realname='+$('realname').value+'&birthday='+$('birthday').value;
         url += '&telephone='+$('telephone').value+'&qq='+$('qq').value;
